@@ -1,22 +1,10 @@
 ### 🧠 *Pointers and Memory*
 
----
-
-````markdown
----
-
-## 🧠 Pointers and Memory
-
-When a C program runs, it interacts with **three main regions of memory**.  
-Each region has different rules for **allocation, scope, and lifetime**, which directly affect how pointers behave.
-
-| 🧩 Memory Type | 📦 Lifetime | 🌍 Scope | 🧾 Description |
-|:--|:--|:--|:--|
-| **Static / Global** | Entire program execution | Global or file-level | Variables declared with `static` or at global scope are stored here. They are created when the program starts and destroyed only when it ends. All functions can access global variables, but `static` variables are visible only within the file or function that defines them. |
-| **Automatic (Stack)** | While the function is executing | Local to function | Variables declared inside a function (without `static`) live in stack memory. They are created when the function is called and destroyed when it returns. Their addresses become invalid afterward — pointers to them become **dangling pointers**. |
+| 🧩 Memory Type | 📦 Lifetime | 🌍 Scope | 🧾 Description | Notes |
+|:--|:--|:--|:--|:--|
+| **Static / Global** | Entire program execution | Global or file-level | Variables declared with `static` or at global scope are stored here. They are created when the program starts and destroyed only when it ends. All functions can access global variables, but `static` variables are visible only within the file or function that defines them. |  |
+| **Automatic (Stack)** | While the function is executing | Local to function | Variables declared inside a function (without `static`) live in stack memory. They are created when the function is called and destroyed when it returns. Their addresses become invalid afterward — pointers to them become **dangling pointers**. |  |
 | **Dynamic (Heap)** | Until explicitly freed | Accessible via pointers | Memory allocated with `malloc()`, `calloc()`, or `realloc()` comes from the heap. It remains valid until `free()` is called. The pointer itself can be copied or passed around, but the memory it points to must be manually released. |
-
----
 
 ### ⚙️ Summary Rules
 

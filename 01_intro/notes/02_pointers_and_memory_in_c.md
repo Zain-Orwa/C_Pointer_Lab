@@ -78,4 +78,30 @@ make run CH=01_intro
 ---
 
 ```
+## 📘 Table 1-1. Scope and Lifetime
 
+| **Type**             | **Scope**                                      | **Lifetime**                          |
+|----------------------|------------------------------------------------|----------------------------------------|
+| **Global**           | The entire file                                | The lifetime of the application        |
+| **Static**           | The function it is declared within             | The lifetime of the application        |
+| **Automatic (local)**| The function it is declared within             | While the function is executing        |
+| **Dynamic**          | Determined by the pointers that reference it   | Until the memory is freed              |
+
+
+---
+
+**Static vs. Automatic Variables**
+
+* **Static Variable:**
+
+  * Scope: Only visible inside the function where it’s declared.
+  * Lifetime: Remains alive for the entire runtime of the program. Keeps its value between function calls.
+
+* **Automatic (Local) Variable:**
+
+  * Scope: Only visible inside the function where it’s declared.
+  * Lifetime: Exists only while the function is executing, and is destroyed when the function ends.
+
+**In Short:** Static variables remember their value between calls and live as long as the program runs. Automatic variables vanish after the function finishes.
+
+``````

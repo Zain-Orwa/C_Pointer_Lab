@@ -270,4 +270,96 @@ names
 The first is great for understanding **pointer arithmetic** and **memory layout**.
 
 ---
+<!-- Compact Expressions & Pointer Arithmetic (names[1][2]) -->
+<div style="font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace; line-height:1.35;">
+
+  <!-- Title -->
+  <div style="padding:10px 14px; border:1px solid #e5e7eb; border-radius:12px; background:#0b1220; color:#e5e7eb; margin-bottom:14px;">
+    <div style="font-weight:700; font-size:16px; letter-spacing:.2px;">🧠 Compact Expressions & Pointer Arithmetic</div>
+    <div style="opacity:.85; margin-top:6px;">
+      Code: <code>char *names[] = {"Miller","Jones","Anderson"};</code> &nbsp;→&nbsp;
+      <code>*(*(names + 1) + 2)</code> == <code>names[1][2]</code> == <strong>'n'</strong>
+    </div>
+  </div>
+
+  <!-- Layout grid -->
+  <div style="display:grid; grid-template-columns: 1fr; gap:14px;">
+
+    <!-- String literals box -->
+    <div style="border:1px solid #e5e7eb; border-radius:12px; padding:12px; background:#f8fafc;">
+      <div style="font-weight:700; margin-bottom:8px;">String Literals (read-only region)</div>
+      <div style="display:grid; gap:8px;">
+        <div style="background:#eef2ff; border:1px solid #c7d2fe; border-radius:10px; padding:8px;">
+          <div><strong>"Miller"</strong></div>
+          <div>[ M ][ i ][ l ][ l ][ e ][ r ][ \0 ]</div>
+        </div>
+        <div style="background:#ecfeff; border:1px solid #a5f3fc; border-radius:10px; padding:8px;">
+          <div><strong>"Jones"</strong></div>
+          <div>
+            [ J ] [ o ] <span style="background:#fef3c7; border:1px solid #fde68a; border-radius:6px; padding:2px 4px;"><strong>n</strong> ← index 2</span> [ e ] [ s ] [ \0 ]
+          </div>
+        </div>
+        <div style="background:#f0fdf4; border:1px solid #bbf7d0; border-radius:10px; padding:8px;">
+          <div><strong>"Anderson"</strong></div>
+          <div>[ A ][ n ][ d ][ e ][ r ][ s ][ o ][ n ][ \0 ]</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- names[] array of pointers -->
+    <div style="border:1px solid #e5e7eb; border-radius:12px; padding:12px; background:#ffffff;">
+      <div style="font-weight:700; margin-bottom:10px;">names[] — Array of <code>char *</code> (pointers)</div>
+      <table style="width:100%; border-collapse:collapse; font-size:14px;">
+        <thead>
+          <tr>
+            <th style="text-align:left; border-bottom:1px solid #e5e7eb; padding:6px 4px; width:70px;">Index</th>
+            <th style="text-align:left; border-bottom:1px solid #e5e7eb; padding:6px 4px;">Value (pointer)</th>
+            <th style="text-align:left; border-bottom:1px solid #e5e7eb; padding:6px 4px;">Points to</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="padding:6px 4px;">0</td>
+            <td style="padding:6px 4px;"><code>&amp;("Miller"[0])</code></td>
+            <td style="padding:6px 4px;">"Miller"</td>
+          </tr>
+          <tr>
+            <td style="padding:6px 4px;">1</td>
+            <td style="padding:6px 4px;"><code>&amp;("Jones"[0])</code></td>
+            <td style="padding:6px 4px;"><strong>"Jones"</strong></td>
+          </tr>
+          <tr>
+            <td style="padding:6px 4px;">2</td>
+            <td style="padding:6px 4px;"><code>&amp;("Anderson"[0])</code></td>
+            <td style="padding:6px 4px;">"Anderson"</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- pointer arithmetic trace -->
+      <div style="margin-top:10px; padding:10px; border:1px dashed #d1d5db; border-radius:10px; background:#f9fafb;">
+        <div style="font-weight:700; margin-bottom:6px;">Pointer Trace to get <code>'n'</code></div>
+        <div><code>names</code> → base of array</div>
+        <div><code>names + 1</code> → points to <code>names[1]</code></div>
+        <div><code>*(names + 1)</code> → pointer to string <strong>"Jones"</strong></div>
+        <div><code>*(names + 1) + 2</code> → pointer to character at index 2</div>
+        <div><code>*(*(names + 1) + 2)</code> → <strong>'n'</strong></div>
+      </div>
+    </div>
+
+    <!-- equivalence -->
+    <div style="border:1px solid #e5e7eb; border-radius:12px; padding:12px; background:#f8fafc;">
+      <div style="font-weight:700; margin-bottom:6px;">Equivalence (compact vs readable)</div>
+      <div style="display:flex; gap:10px; flex-wrap:wrap;">
+        <code>*(*(names + 1) + 2)</code>
+        <span style="opacity:.7;">≡</span>
+        <code>names[1][2]</code>
+        <span style="opacity:.7;">→</span>
+        <code>'n'</code>
+      </div>
+      <div style="margin-top:6px; opacity:.85;">Tip: prefer <code>names[1][2]</code> in production; use the pointer form to learn memory and indirection.</div>
+    </div>
+
+  </div>
+</div>
 

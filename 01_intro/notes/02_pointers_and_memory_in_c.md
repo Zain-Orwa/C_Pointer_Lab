@@ -1,5 +1,7 @@
 ### 🧠 *Pointers and Memory*
 
+When a C program is compiled, it works with three types of memory:
+
 | 🧩 Memory Type | 📦 Lifetime | 🌍 Scope | 🧾 Description | Notes |
 |:--|:--|:--|:--|:--|
 | **Static / Global** | Entire program execution | Global or file-level | Variables declared with `static` or at global scope are stored here. They are created when the program starts and destroyed only when it ends. All functions can access global variables, but `static` variables are visible only within the file or function that defines them. |  |

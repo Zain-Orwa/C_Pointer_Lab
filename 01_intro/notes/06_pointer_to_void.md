@@ -1,7 +1,4 @@
-Perfect — here’s your **final combined version**:
-This merges your previous “pointer to void” explanation with the new **`sizeof(void)` vs `sizeof(void*)`** section — all formatted beautifully for **GitHub dark mode**, ready to upload as a `peer_explanation.md` or `pointer_to_void_explained.md`.
 
----
 
 ````markdown
 # 🧩 Pointer to `void` — The Universal Pointer in C
@@ -202,13 +199,8 @@ All arrows point to the same memory address.
 > Always cast responsibly, and remember:
 > `sizeof(void*)` ✅ legal — `sizeof(void)` ❌ illegal.
 
-```
-
----
 
 
-
-````markdown
 ## 🔬 Live Memory Demo (runnable C)
 
 > Shows: `sizeof(void*)`, safe casting to/from `void *`, `NULL` checks, and address/value prints.
@@ -289,7 +281,7 @@ int main(void) {
 
     return 0;
 }
-````
+```c
 
 ### 💻 Example Output (typical 64-bit)
 

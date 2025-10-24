@@ -95,3 +95,11 @@ make run CH=01_intro
 **In Short:** Static variables remember their value between calls and live as long as the program runs. Automatic variables vanish after the function finishes.
 
 ``````
+
+
+The downside,many problems can occur when using pointers, such as:
+• Accessing arrays and other data structures beyond their bounds.
+• Referencing automatic variables after they have gone out of existence.
+• Referencing heap allocated memory after it has been released.
+• Dereferencing a pointer before memory has been allocated to it.
+

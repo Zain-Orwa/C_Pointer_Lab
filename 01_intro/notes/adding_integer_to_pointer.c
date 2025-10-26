@@ -2,19 +2,15 @@
 
 int main(){
 
-	short s;
-	short *ps = &s;
+	int vector[] = {28, 41, 7};
+	int *p0 = vector;
+	int *p1 = vector + 1;
+	int *p2 = vector + 2;
 
-	char c;
-	char *pc = &c;
+	printf("p2 > p0:%d\n", p2 > p0);
+	printf("p2 < p1:%d\n", p2 < p1);
+	printf("p0 > p1:%d\n", p0 > p1);
 
-	printf("Content of ps before: %p\n", ps);
-	ps = ps + 1;
-	printf("Content of ps after: %p\n", ps);
-
-	printf("Content of pc before: %p\n", pc);
-	pc = pc + 1;
-	printf("Content of pc after: %p\n", pc);
 
 
 	return (0);

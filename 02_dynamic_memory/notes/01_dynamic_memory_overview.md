@@ -17,14 +17,16 @@ Dynamic memory allows programs to:
 ## ⚙️ 2️⃣ The Runtime System
 
 Every C program executes inside a **runtime system**, typically managed by the **operating system**.
-This runtime system provides distinct areas of memory for different parts of a program:
+This runtime system provides separate areas of memory for different program components:
 
-| 🧩 **Memory Area** | 🧠 **Managed By** | 📘 **Description** |
-| :------------------ | :---------------- | :----------------- |
-| **Stack** | Runtime system | Stores **automatic (local) variables**. Memory is **allocated** when functions are called and **freed** when they return. |
-| **Heap** | Programmer | Used for **dynamic allocation** (`malloc`, `calloc`, `realloc`, `free`). Memory **persists** until explicitly released. |
-| **Data Segment** | Loader / OS | Holds **global** and **static** variables. Exists throughout the program’s lifetime. |
-| **Text Segment** | Loader | Contains **executable code** (functions, compiled instructions). |
+| Memory Area     | Managed By      | Description                                                                                       |
+| :-------------- | :-------------- | :------------------------------------------------------------------------------------------------ |
+| **Stack**       | Runtime system  | Used for **automatic (local) variables**. Memory is allocated when functions are called and freed when they return. |
+| **Heap**        | Programmer      | Used for **dynamic allocation** (`malloc`, `calloc`, `realloc`, `free`). Memory persists until explicitly released. |
+| **Data Segment**| Loader / OS     | Contains **global** and **static** variables that exist for the entire program duration.          |
+| **Text Segment**| Loader          | Contains the **executable code** of the program (compiled instructions and functions).            |
+
+---
 
 
 ### 🧭 Memory Layout Visualization

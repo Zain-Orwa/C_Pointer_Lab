@@ -1,15 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
-int main(){
-  char *Chunk;
+int main(void) {
+    char *name = (char *) malloc(strlen("Susan") + 1);
+    strcpy(name, "Susan");
 
-  while(1){
-    Chunk = (char*)malloc(1000000);
-    printf("Allocating\n");
-  }
-
-  printf("%c", *Chunk);
-
-  return (0);
+    while (*name != '\0') {
+        printf("%c", *name);
+        name++; // shifts pointer forward
+    }
 }

@@ -205,8 +205,5 @@ When `average()` returns, its entire frame is popped and memory is reused for fu
 
 ---
 
-📘 **Next Lesson:**
-➡️ `03_02_pointers_to_local_data.md` — Why returning pointers to local (stack) variables leads to dangling pointer bugs.
-
 ```
 

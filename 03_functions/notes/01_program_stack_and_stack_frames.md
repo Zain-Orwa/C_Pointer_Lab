@@ -49,12 +49,12 @@ When a function returns, its frame is popped off and destroyed.
 
 Each frame contains several parts:
 
-| # | Component               | Description                                           | Why It Exists                                                    |
-| :- | :---------------------- | :---------------------------------------------------- | :--------------------------------------------------------------- |
-| 1 | **Return Address**       | The address to jump back to when the function finishes. | Without it, the CPU wouldn’t know where to continue execution.   |
-| 2 | **Local Data**           | Space for local variables inside the function.          | Each function needs isolated working memory.                     |
-| 3 | **Parameters**           | The values passed from the calling function.            | So the function can receive input data.                          |
-| 4 | **Stack and Base Pointers** | Managed by the CPU to keep track of current and previous frames. | Help navigate between frames efficiently.                        |
+| # | Component                   | Description                                                         | Why It Exists                                                 |
+| :-| :------------------------   | :-------------------------------------------------------------------| :-------------------------------------------------------------|
+| 1 | **Return Address**          | The address to jump back to when the function finishes.             | Without it, the CPU wouldn’t know where to continue execution.|
+| 2 | **Local Data**              | Space for local variables inside the function.                      | Each function needs isolated working memory.                  |
+| 3 | **Parameters**              | The values passed from the calling function.                        | So the function can receive input data.                       |
+| 4 | **Stack and Base Pointers** | Managed by the CPU to keep track of current and previous frames.    | Help navigate between frames efficiently.                     |
 
 🧠 **Analogy:**  
 Each function call is like opening a **new folder** with:
@@ -70,10 +70,10 @@ When the function ends, the folder is closed and removed from the pile.
 
 Two registers are crucial for managing stack frames:
 
-| Pointer | Description                                            | Analogy                                  |
-| :------- | :----------------------------------------------------- | :--------------------------------------- |
-| **Base Pointer (BP)** | Marks the start (base) of the current stack frame. | A bookmark placed at the start of this function’s folder. |
-| **Stack Pointer (SP)** | Points to the current top of the stack (the most recent data). | The edge of the paper you’re writing on. |
+| Pointer                | Description                                                    | Analogy                                                   |
+| :----------------------| :--------------------------------------------------------------| :---------------------------------------------------------|
+| **Base Pointer (BP)**  | Marks the start (base) of the current stack frame.             | A bookmark placed at the start of this function’s folder. |
+| **Stack Pointer (SP)** | Points to the current top of the stack (the most recent data). | The edge of the paper you’re writing on.                  |
 
 📘 **Illustration: Stack Frame Example**
 
@@ -158,7 +158,7 @@ the program runs out of memory for new frames and crashes.
 | :------------------------ | :------------------------------------------------------------------------ |
 | 🪜 **Debugging pointers** | Knowing which memory belongs to which frame prevents invalid access.      |
 | 🔒 **Preventing bugs**    | Helps you avoid returning pointers to destroyed local variables.          |
-| ⚡ **Performance**         | Stack memory is fast — only requires adjusting the SP register.           |
+| ⚡ **Performance**        | Stack memory is fast — only requires adjusting the SP register.           |
 | 🧩 **Recursion safety**   | Each recursive call consumes stack space — too many calls cause overflow. |
 
 ---

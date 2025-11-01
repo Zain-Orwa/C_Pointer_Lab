@@ -40,8 +40,8 @@ If that address refers to memory that won’t exist after the function returns, 
 
 **Stack vs Heap on a call returning an array:**
 
-```
 #Before return (inside callee):
+```
 ┌───────────────────────────────┐
 │  callee() stack frame         │
 │  ───────────────────────────  │
@@ -50,7 +50,6 @@ If that address refers to memory that won’t exist after the function returns, 
 │                               │
 │  return arr;   →  pointer=0x700
 └───────────────────────────────┘
-
 After return (back in caller):
 ┌───────────────────────────────┐
 │  caller() stack frame         │

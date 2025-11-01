@@ -32,9 +32,7 @@ If that address refers to memory that won’t exist after the function returns, 
 | Static        | Entire program         | ✅ Yes           | Shared buffer; last writer overwrites |
 | Global        | Entire program         | ✅ Yes           | Avoid global state if you can         |
 
-```
 
----
 
 ## 🧱 Memory Diagrams (Mental Model)
 

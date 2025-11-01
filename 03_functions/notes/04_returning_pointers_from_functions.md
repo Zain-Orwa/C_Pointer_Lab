@@ -41,27 +41,45 @@ If that address refers to memory that won’t exist after the function returns, 
 **Stack vs Heap on a call returning an array:**
 
 ```
+Before return (inside callee):
+┌───────────────────────────────┐
+│  callee() stack frame         │
+│  ───────────────────────────  │
+│  int arr[5];        @ 0x700   │
+│  arr: [45][45][45][45][45]    │
+│                               │
+│  return arr;   →  pointer=0x700
+└───────────────────────────────┘
 
-Before return (inside callee)             After return (back in caller)
+After return (back in caller):
+┌───────────────────────────────┐
+│  caller() stack frame         │
+│  ───────────────────────────  │
+│  int *vec = 0x700   ← still points here ❌
+└───────────────────────────────┘
 
-+---------------------------+             +---------------------------+
-| callee() frame            |             | caller() frame            |
-|  int *p -> 0x500 ---------|---------+   |  int *vec -> 0x500        |
-+---------------------------+         |   +---------------------------+
-|           |
-v           v
-HEAP: [a][a][a][a][a]  (persists)
+But callee() frame is gone now!
 
+Memory at 0x700 is no longer valid.
+That region of the stack is free to be reused (garbage).
+
+#Correct version using malloc:
 ```
+┌───────────────────────────────┐
+│  callee() stack frame         │
+│  int *arr = malloc(...) @0x500│
+│  arr: [45][45][45][45][45]    │
+│  return arr;   → pointer=0x500│
+└───────────────────────────────┘
 
-**Bad case (returning local array):**
+After return:
+┌───────────────────────────────┐
+│  caller() frame               │
+│  int *vec = 0x500 ✅ valid    │
+│  vec still points to HEAP     │
+└───────────────────────────────┘
 
-```
-
-Inside callee():                     After return:
-+---------------------------+        (callee frame popped)
-| int arr[5];  &arr = 0x700 |  --->  pointer still 0x700  ❌ (dangling)
-+---------------------------+        memory now reused/garbage
+HEAP memory persists until free(vec)
 
 ````
 

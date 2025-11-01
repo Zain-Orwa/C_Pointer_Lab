@@ -41,7 +41,7 @@ If that address refers to memory that won’t exist after the function returns, 
 **Stack vs Heap on a call returning an array:**
 
 ```
-Before return (inside callee):
+#Before return (inside callee):
 ┌───────────────────────────────┐
 │  callee() stack frame         │
 │  ───────────────────────────  │
@@ -58,7 +58,8 @@ After return (back in caller):
 │  int *vec = 0x700   ← still points here ❌
 └───────────────────────────────┘
 
-But callee() frame is gone now!
+#But callee() frame is gone now!
+```
 
 Memory at 0x700 is no longer valid.
 That region of the stack is free to be reused (garbage).

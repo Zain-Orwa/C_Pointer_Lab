@@ -138,7 +138,7 @@ Before return (inside allocateArray)
 | main frame                                                    |
 |   vector = NULL                                               |
 +---------------------------- heap -----------------------------+
-| 0x600: [45][45][45][45][45]  (allocated but unreachable) ❌    |
+| 0x600: [45][45][45][45][45]  (allocated but unreachable) ❌   |
 +---------------------------------------------------------------+
 
 After return

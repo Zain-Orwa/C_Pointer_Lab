@@ -1,11 +1,19 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 int main(){
+	int *pv = (int*)malloc(5 * sizeof(int));
 
-	int arr3d[3][2][4] = {
-		{{1, 2, 3, 4,}, {5, 6, 7, 8}},
-		{{9, 10, 11, 12}, {13, 14, 16, 17}},
-		{{18, 19, 20, 22}, {23, 24, 25, 26}}
-	};
+	for (int i = 0; i < 5; i++){
+		*(pv + i) = i + 1;
+	}
 
+	for (int i = 0; i < 5; i++){
+		printf("pv[%d] = %d\n", i, *(pv + i));
+	}
+
+	free(pv);
+	pv = NULL;
+
+	return (0);
 }
